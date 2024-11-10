@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MdLocationOn } from "react-icons/md";
-import "../App.css";
+import "../../App.css"
 import { HiCalendar, HiSearch } from "react-icons/hi";
 
 function Header() {
@@ -19,7 +19,7 @@ function Header() {
             name="destination"
             id="destination"
           />
-          
+
           <span className="seperator"></span>
         </div>
         <div className="headerSearchItem">
