@@ -16,6 +16,16 @@ function Header() {
     room: 1,
   });
 
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "traveling-date-renge",
+    },
+  ]);
+
+  const [openDate, setOpenDate] = useState(false);
+
   const handleOptions = (name, operations) => {
     setOptions((prev) => {
       return {
@@ -44,7 +54,16 @@ function Header() {
         </div>
         <div className="headerSearchItem">
           <HiCalendar className="headerIcon dateIcon" />
-          <div className="dateDropDown">2024/11/09</div>
+          <div onClick={() => setOpenDate(!openDate)} className="dateDropDown">
+            2024/11/09
+          </div>
+          {openDate && (
+            <DateRange
+              ranges={date}
+              className="date"
+              onChange={(item) => setDate([item.selection])}
+            />
+          )}
           <span className="seperator"></span>
         </div>
 
