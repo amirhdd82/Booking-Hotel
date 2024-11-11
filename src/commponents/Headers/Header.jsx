@@ -3,6 +3,9 @@ import { MdLocationOn } from "react-icons/md";
 import "../../App.css";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import useOutSideClick from "../../hooks/useOutSideClick";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
 
 function Header() {
   const [destination, setDestination] = useState("");
