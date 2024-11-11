@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 import "../../App.css";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
+import useOutSideClick from "../../hooks/useOutSideClick";
 
 function Header() {
   const [destination, setDestination] = useState("");
@@ -16,8 +17,7 @@ function Header() {
     setOptions((prev) => {
       return {
         ...prev,
-        [name]:
-          operations === "inc" ? options[name] + 1 : options[name] - 1,
+        [name]: operations === "inc" ? options[name] + 1 : options[name] - 1,
       };
     });
   };
@@ -47,10 +47,15 @@ function Header() {
 
         <div className="headerSearchItem">
           <div id="optionDropDown" onClick={() => setOpenOptions(!openOptions)}>
-            {options.adult} adult  {options.children} children {options.room} room
+            {options.adult} adult {options.children} children {options.room}{" "}
+            room
           </div>
           {openOptions && (
-            <GuestOptionList handleOptions={handleOptions} options={options} />
+            <GuestOptionList
+              setOpenOptions={setOpenOptions}
+              handleOptions={handleOptions}
+              options={options}
+            />
           )}
           <span className="seperator"></span>
         </div>
@@ -65,9 +70,11 @@ function Header() {
   );
 }
 
-function GuestOptionList({ options, handleOptions }) {
+function GuestOptionList({ options, handleOptions, setOpenOptions }) {
+  const optionsRef = useRef();
+  useOutSideClick(optionsRef, () => setOpenOptions(false));
   return (
-    <div className="guestOptions">
+    <div className="guestOptions" ref={optionsRef}>
       <OptionItem
         handleOptions={handleOptions}
         type="adult"
