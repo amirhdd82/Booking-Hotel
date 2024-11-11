@@ -6,6 +6,7 @@ import useOutSideClick from "../../hooks/useOutSideClick";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
+import { format } from "date-fns/esm";
 
 function Header() {
   const [destination, setDestination] = useState("");
@@ -20,7 +21,7 @@ function Header() {
     {
       startDate: new Date(),
       endDate: new Date(),
-      key: "traveling-date-renge",
+      key: "selection",
     },
   ]);
 
@@ -55,13 +56,18 @@ function Header() {
         <div className="headerSearchItem">
           <HiCalendar className="headerIcon dateIcon" />
           <div onClick={() => setOpenDate(!openDate)} className="dateDropDown">
-            2024/11/09
+            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+              date[0].endDate,
+              "MM/dd/yyyy"
+            )}`}
           </div>
           {openDate && (
             <DateRange
               ranges={date}
               className="date"
               onChange={(item) => setDate([item.selection])}
+              minDate={new Date()}
+              moveRangeOnFirstSelection={true}
             />
           )}
           <span className="seperator"></span>
