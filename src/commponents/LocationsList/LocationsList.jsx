@@ -8,7 +8,7 @@ function LocationsList() {
     <div className="nearbyLocation">
       <h2>Nearby Locations</h2>
       <div className="locationList">
-        {data.map((item) => {
+        {data.map((item) => { 
           return (
             <div className="locationItem" key={item.id}>
               <img src={item.xl_picture_url} alt={item.name} />
