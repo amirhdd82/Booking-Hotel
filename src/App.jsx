@@ -1,19 +1,20 @@
 import React from "react";
-import Header from "./commponents/Headers/Header";
+import Headers from "./commponents/Headers/Headers";
 import LocationsList from "./commponents/LocationsList/LocationsList";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./commponents/AppLayout/AppLayout";
+import Hotels from "./commponents/Hotels/Hotels";
 
 function App() {
   return (
     <div>
       <Toaster />
-      <Header />
+      <Headers />
       <Routes>
         <Route path="/" element={<LocationsList />} />
         <Route path="/hotels" element={<AppLayout />}></Route>
-        <Route index element={<div>Hotel</div>}></Route>
+        <Route index element={<Hotels />}></Route>
         <Route path=":id" element={<div>single hotel</div>}></Route>
       </Routes>
     </div>
