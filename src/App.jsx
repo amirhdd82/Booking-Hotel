@@ -5,20 +5,21 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./commponents/AppLayout/AppLayout";
 import Hotels from "./commponents/Hotels/Hotels";
+import HotelsProvider from "./commponents/context/HotelsProvider";
 
 function App() {
   return (
-    <div>
+    <HotelsProvider>
       <Toaster />
       <Headers />
       <Routes>
         <Route path="/" element={<LocationsList />} />
         <Route path="/hotels" element={<AppLayout />}>
           <Route index element={<Hotels />} />
-          <Route path=":id" element={<div>single hotel</div>}/>
+          <Route path=":id" element={<div>single hotel</div>} />
         </Route>
       </Routes>
-    </div>
+    </HotelsProvider>
   );
 }
 
