@@ -4,7 +4,7 @@ import LocationsList from "./commponents/LocationsList/LocationsList";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./commponents/AppLayout/AppLayout";
-import Hotels from "./commponents/Hotels/Hotels";
+import Hotels from "./commponents/Hotels/Hotels"; 
 
 function App() {
   return (
