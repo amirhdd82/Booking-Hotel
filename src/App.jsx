@@ -4,7 +4,7 @@ import LocationsList from "./commponents/LocationsList/LocationsList";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./commponents/AppLayout/AppLayout";
-import Hotels from "./commponents/Hotels/Hotels"; 
+import Hotels from "./commponents/Hotels/Hotels";
 
 function App() {
   return (
@@ -13,9 +13,10 @@ function App() {
       <Headers />
       <Routes>
         <Route path="/" element={<LocationsList />} />
-        <Route path="/hotels" element={<AppLayout />}></Route>
-        <Route index element={<Hotels />}></Route>
-        <Route path=":id" element={<div>single hotel</div>}></Route>
+        <Route path="/hotels" element={<AppLayout />}>
+          <Route index element={<Hotels />} />
+          <Route path=":id" element={<div>single hotel</div>}/>
+        </Route>
       </Routes>
     </div>
   );

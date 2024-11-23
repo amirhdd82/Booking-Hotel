@@ -8,7 +8,7 @@ function Hotels() {
   const room = JSON.parse(searchParams.get("options"))?.room;
   useFetch(
     "http://localhost:5000/hotels",
-    `name_link=${destination || ""}&accommodates_gte=${room}`
+    `name_link=${destination || ""}&accommodates_gte=${room || 1}`
   );
   return <div>Hotels</div>;
 }
