@@ -26,11 +26,13 @@ function Hotels() {
             to={`/hotels/${item.id}?lat=${item.latitude}&lng=${item.longitude}`}
           >
             <div className="searchItem">
-              <img src={picture_url.url} alt={item.name} />
+              <img src={item.picture_url.url} alt={item.name} />
               <div className="searctItmeDesc">
                 <p className="location">{item.smart_location}</p>
                 <p className="name">{item.name}</p>
-                <p className="price">{item.smart_location}</p>
+                <p className="price">
+                  € {item.price} ;<span>night</span>
+                </p>
               </div>
             </div>
           </Link>
