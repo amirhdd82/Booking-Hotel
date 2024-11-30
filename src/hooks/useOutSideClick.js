@@ -1,16 +1,20 @@
 import { useEffect } from "react";
 
-export default function useOutSideClick(ref, cb) {
+export default function useOutsideClick(ref, exceptionId, cb) {
   useEffect(() => {
-    function handleOutSideClick(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+    function handleOutsideClick(event) {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target) &&
+        event.target.id !== exceptionId
+      ) {
         cb();
       }
     }
-    document.addEventListener("mousedown", handleOutSideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleOutSideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, [ref, cb]);
+  }, [ref, cb, exceptionId]);
 }
